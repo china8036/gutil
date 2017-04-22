@@ -9,14 +9,14 @@ func (bs ByteSize) String() string {
 		return fmt.Sprintf("%d B", bs)
 	}
 	if bs < 1024*1024 {
-		return fmt.Sprintf("%2f K", bs/1024)
+		return fmt.Sprintf("%2f K", float32(bs/1024))
 	}
 	if bs < 1024*1024*1024 {
-		return fmt.Sprintf("%2f M", bs/(1024*1024))
+		return fmt.Sprintf("%2f M", float32(bs/(1024*1024)))
 	}
 
 	if bs < 1024*1024*1024*1024 {
-		return fmt.Sprintf("%2f G", bs/(1024*1024*1024))
+		return fmt.Sprintf("%2f G", float32(bs/(1024*1024*1024)))
 	}
-	return fmt.Sprintf("%2f G", bs/(1024*1024*1024*1024))
+	return fmt.Sprintf("%2f G", float32(bs/(1024*1024*1024*1024)))
 }
