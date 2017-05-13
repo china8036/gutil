@@ -1,22 +1,23 @@
-package goseg
+package str
 
 import (
 	"fmt"
 )
 
 
-func NewSeg()Seg{
-	return Seg{}
+func NewSeg()*Seg{
+	return &Seg{}
 }
 
+type SegDic map[string][]string
 
 type  Seg struct {
-	dic map[string][]int
+	dic SegDic
 
 }
 
 //获取分词结果
-func (s *Seg) getSegDic(title string)map[string][]int{
+func (s *Seg) GetSegDic(title string)SegDic{
 	tmp_dic := s.seg(title)
 	for index,actor := range tmp_dic{
              s.pushActor(actor,index)
@@ -55,11 +56,11 @@ func (s *Seg)seg(title string) []string {
 //过滤重复和记录位置
 func (s *Seg) pushActor(str string,index int) {
 	if s.dic == nil{
-		s.dic = make(map[string][]int)
+		s.dic = make(SegDic)
 	}
         if s.dic[str] == nil{
-		s.dic[str] = make([]int,0)
+		s.dic[str] = make([]string,0)
 	}
-	s.dic[str] = append(s.dic[str],index)
+	s.dic[str] = append(s.dic[str],fmt.Sprintf("%d",index))
 
 }
