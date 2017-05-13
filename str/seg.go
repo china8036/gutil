@@ -49,7 +49,11 @@ func (s *Seg)seg(title string) []string {
 		tmp_return[tmp_index] = fmt.Sprintf("%s%s", tmp_return[tmp_index], string(actor))
 
 	}
-	return tmp_return[0:tmp_index+1]
+	rang := len(tmp_rune)
+	if tmp_index+1 < rang {
+		rang = tmp_index+1
+	}
+	return tmp_return[0:rang]
 }
 
 
