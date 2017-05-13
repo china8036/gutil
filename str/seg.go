@@ -2,6 +2,7 @@ package str
 
 import (
 	"fmt"
+	"strings"
 )
 
 
@@ -45,8 +46,12 @@ func (s *Seg)seg(title string) []string {
 				tmp_index++
 			}
 			continue
+		}else if ascii_code>= 65 && ascii_code <= 90{//按小写字母存储 以便于查询
+			tmp_return[tmp_index] = fmt.Sprintf("%s%s", tmp_return[tmp_index], strings.ToLower(string(actor)))
+		}else{
+			tmp_return[tmp_index] = fmt.Sprintf("%s%s", tmp_return[tmp_index], string(actor))
 		}
-		tmp_return[tmp_index] = fmt.Sprintf("%s%s", tmp_return[tmp_index], string(actor))
+
 
 	}
 	rang := len(tmp_rune)
